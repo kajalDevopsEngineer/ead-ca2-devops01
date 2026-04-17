@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: ead-ca201
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: backend-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_URL
+          value: "mongodb+srv://ead2024:ead2024.@ead-2023-24.lpclwdo.mongodb.net/?retryWrites=true&w=majority"
+        - name: DATABASE_NAME
+          value: "ead_ca2"
+        - name: DATABASE_COLLECTION
+          value: "ead_2024"
