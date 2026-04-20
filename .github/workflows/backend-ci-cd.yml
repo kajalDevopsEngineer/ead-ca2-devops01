@@ -1,0 +1,41 @@
+name: Backend CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main   # Only production-ready deployments
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 3: Docker Hub login
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # Step 4: Build backend image (versioned)
+      - name: Build backend image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} ./BE
+
+      # Step 5: Push backend image
+      - name: Push backend image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }}
+
+      # Step 6: Configure kubeconfig + deploy
+      - name: Deploy to Kubernetes
+        run: |
+          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
+
+          kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} -n ead-ca201
+
+          kubectl rollout status deployment/backend -n ead-ca201
