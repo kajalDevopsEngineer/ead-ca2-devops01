@@ -28,8 +28,9 @@ jobs:
 
     - name: Configure kubeconfig
       run: |
-        echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > kubeconfig
-        export KUBECONFIG=$PWD/kubeconfig
+        echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > $HOME/.kube/config
+        kubectl version --client
+        kubectl cluster-info
 
     # OPTIONAL (only if you still maintain blue/green separately)
     - name: Update BLUE or GREEN manually
