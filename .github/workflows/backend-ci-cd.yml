@@ -47,4 +47,5 @@ jobs:
 
           kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} -n ead-ca201
 
-          kubectl rollout status deployment/backend -n ead-ca201
+          kubectl rollout status deployment/backend-green -n ead-ca201
+          kubectl rollout status deployment/backend-blue -n ead-ca201
