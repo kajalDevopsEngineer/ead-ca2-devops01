@@ -6,6 +6,7 @@ metadata:
 spec:
   selector:
     app: backend
+    version: blue
   ports:
     - port: 8080
       targetPort: 8080
