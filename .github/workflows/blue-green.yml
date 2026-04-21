@@ -6,57 +6,62 @@ on:
       - main
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
 
     # 1. Checkout code
-    - name: Checkout repository
+    - name: Checkout repo
       uses: actions/checkout@v3
 
-    # 2. Login to Docker Hub
-    - name: Login to Docker Hub
+    # 2. Docker login
+    - name: Login DockerHub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # 3. Build Docker image (GREEN version)
+    # 3. Build image (IMPORTANT FIXED PATH)
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-app:v2  ./BE
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} ./BE
 
     # 4. Push image
-    - name: Push Docker image
+    - name: Push image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/backend-app:v2
+        docker push ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }}
 
     # 5. Setup kubectl
     - name: Setup kubectl
       uses: azure/setup-kubectl@v3
 
-    - name: Configure Kubeconfig
+    # 6. Setup kubeconfig (IMPORTANT FIX)
+    - name: Configure kubeconfig
       run: |
-        echo "${{ secrets.KUBECONFIG_DATA }}" > kubeconfig
-        export KUBECONFIG=kubeconfig
+        echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > kubeconfig
+        export KUBECONFIG=$PWD/kubeconfig
+        kubectl version --client
 
-    # 6. Deploy GREEN version
+    # 7. Deploy GREEN (NEW VERSION)
     - name: Deploy Green
       run: |
-        kubectl apply -f k8s/backend-green.yaml
+        kubectl set image deployment/backend-green \
+          backend=${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} \
+          -n ead-ca201
 
-    # 7. Wait for GREEN rollout
-    - name: Wait for Green Deployment
+    # 8. Wait for GREEN rollout
+    - name: Wait Green
       run: |
         kubectl rollout status deployment/backend-green -n ead-ca201
 
-    # 8. Health check (important for marks)
-    - name: Health Check
+    # 9. Health check
+    - name: Verify Green Pods
       run: |
         kubectl get pods -n ead-ca201
 
-    # 9. Switch Traffic to GREEN
-    - name: Switch Service to Green
+    # 10. Switch traffic (SERVICE SHIFT)
+    - name: Switch traffic to GREEN
       run: |
-        kubectl patch service backend-service -n ead-ca201 -p '{"spec":{"selector":{"app":"backend","version":"green"}}}'
+        kubectl patch service backend-service -n ead-ca201 \
+        -p '{"spec":{"selector":{"app":"backend","version":"green"}}}'
