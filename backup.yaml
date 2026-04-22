@@ -1,0 +1,1836 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T20:46:11Z"
+    generateName: backend-blue-f4657d459-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: f4657d459
+      version: blue
+    name: backend-blue-f4657d459-49zjs
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-blue-f4657d459
+      uid: 84bdd4d6-eff3-444d-b25d-c0f6c65ef722
+    resourceVersion: "372053"
+    uid: 2a05cdc8-4f06-438e-84a3-c42fed22c1a7
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-fxws9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-fxws9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:13Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:11Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:13Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:13Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:11Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://c42f59e8e88f98d9f0fdf312c8a0ffa2d648c6b9de29ca42f75afe9e737dc9c2
+      image: docker.io/kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imageID: docker.io/kajaldevopsengineer/backend-app@sha256:a86a3f335d59afc3119cd0e008f0d0060db8db3ddf3b0c9c269679a79404ca3c
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T20:46:12Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-fxws9
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.61
+    podIPs:
+    - ip: 10.244.0.61
+    qosClass: BestEffort
+    startTime: "2026-04-22T20:46:11Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T20:46:13Z"
+    generateName: backend-blue-f4657d459-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: f4657d459
+      version: blue
+    name: backend-blue-f4657d459-9d5mv
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-blue-f4657d459
+      uid: 84bdd4d6-eff3-444d-b25d-c0f6c65ef722
+    resourceVersion: "372091"
+    uid: 659a1846-4631-4a2d-b12b-22958e9561d5
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-sr9dl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-sr9dl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:15Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:13Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:15Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:15Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:13Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://bd29b6926090ef4e56396d81f851a1b63e7388be6c6195750de977887d0bcde7
+      image: docker.io/kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imageID: docker.io/kajaldevopsengineer/backend-app@sha256:a86a3f335d59afc3119cd0e008f0d0060db8db3ddf3b0c9c269679a79404ca3c
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T20:46:15Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-sr9dl
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.130
+    podIPs:
+    - ip: 10.244.0.130
+    qosClass: BestEffort
+    startTime: "2026-04-22T20:46:13Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T20:46:15Z"
+    generateName: backend-blue-f4657d459-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: f4657d459
+      version: blue
+    name: backend-blue-f4657d459-ptt44
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-blue-f4657d459
+      uid: 84bdd4d6-eff3-444d-b25d-c0f6c65ef722
+    resourceVersion: "372131"
+    uid: c310c85d-60d6-4ac4-9eb6-a58c278b4509
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rt6bt
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-rt6bt
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:17Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:15Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:17Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:17Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:46:15Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://3e5b5c1983c434a17734bf876065132fb8232443c6bab53b0dc6141db99225bb
+      image: docker.io/kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+      imageID: docker.io/kajaldevopsengineer/backend-app@sha256:a86a3f335d59afc3119cd0e008f0d0060db8db3ddf3b0c9c269679a79404ca3c
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T20:46:17Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rt6bt
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.125
+    podIPs:
+    - ip: 10.244.0.125
+    qosClass: BestEffort
+    startTime: "2026-04-22T20:46:15Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T21:05:58Z"
+    generateName: backend-green-699cff8b58-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 699cff8b58
+      version: green
+    name: backend-green-699cff8b58-gqdhl
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-green-699cff8b58
+      uid: 5358df8d-bd87-4c69-9360-ea9ce85ad8e9
+    resourceVersion: "377345"
+    uid: b5651ac3-5693-4761-9b5e-7d15712c8d7a
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r57xl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-r57xl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:58Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:58Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://bd4e5e740efd840856810343183c0a8bb1d034bdb4e28c693d29803b90d7c0b6
+      image: acreaadca2012104262113.azurecr.io/backend:latest
+      imageID: acreaadca2012104262113.azurecr.io/backend@sha256:73236f3096390ff8d48c69c170cecb209805810fc1de58f51f47d97608150fca
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T21:05:59Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r57xl
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.145
+    podIPs:
+    - ip: 10.244.0.145
+    qosClass: BestEffort
+    startTime: "2026-04-22T21:05:58Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T21:05:57Z"
+    generateName: backend-green-699cff8b58-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 699cff8b58
+      version: green
+    name: backend-green-699cff8b58-k9ch7
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-green-699cff8b58
+      uid: 5358df8d-bd87-4c69-9360-ea9ce85ad8e9
+    resourceVersion: "377329"
+    uid: 1a36b842-bf8c-4ce8-9744-65f619dd6f86
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-llbv2
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-llbv2
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:59Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:57Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:59Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:59Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:57Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://96a3af13c91335d8c33a6c44a6b9767cb1b7d241b6120665fc7581d7e50d5d2c
+      image: acreaadca2012104262113.azurecr.io/backend:latest
+      imageID: acreaadca2012104262113.azurecr.io/backend@sha256:73236f3096390ff8d48c69c170cecb209805810fc1de58f51f47d97608150fca
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T21:05:59Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-llbv2
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.22
+    podIPs:
+    - ip: 10.244.0.22
+    qosClass: BestEffort
+    startTime: "2026-04-22T21:05:57Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-22T21:05:57Z"
+    generateName: backend-green-699cff8b58-
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 699cff8b58
+      version: green
+    name: backend-green-699cff8b58-sbh4t
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-green-699cff8b58
+      uid: 5358df8d-bd87-4c69-9360-ea9ce85ad8e9
+    resourceVersion: "377349"
+    uid: 9072957b-608c-4392-8da7-144ab81d7979
+  spec:
+    containers:
+    - env:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            key: MONGO_URI
+            name: app-secrets
+      image: kajaldevopsengineer/backend-app:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rgjrr
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-rgjrr
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:58Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:06:00Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T21:05:58Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://8e147cf7be65845486db5a0870beaeee1ada09533de47d8201d7d6bfc2736b34
+      image: acreaadca2012104262113.azurecr.io/backend:latest
+      imageID: acreaadca2012104262113.azurecr.io/backend@sha256:73236f3096390ff8d48c69c170cecb209805810fc1de58f51f47d97608150fca
+      lastState: {}
+      name: backend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T21:05:59Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rgjrr
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.33
+    podIPs:
+    - ip: 10.244.0.33
+    qosClass: BestEffort
+    startTime: "2026-04-22T21:05:58Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-04-21T22:30:16Z"
+    generateName: frontend-78b6f4564d-
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: 78b6f4564d
+    name: frontend-78b6f4564d-sr6nd
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: frontend-78b6f4564d
+      uid: 4469a939-f818-4f8c-88e7-6c4f59693e6a
+    resourceVersion: "370537"
+    uid: 22930c08-2c75-4863-a1fc-580ef8e58a08
+  spec:
+    containers:
+    - image: acreaadca2012104262113.azurecr.io/frontend:latest
+      imagePullPolicy: Always
+      name: frontend
+      ports:
+      - containerPort: 22137
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2bn4j
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: aks-nodepool1-24847729-vmss000000
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-2bn4j
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-21T22:30:17Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-21T22:30:16Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:40:55Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-22T20:40:55Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-04-21T22:30:16Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://7bfd51fedaa52764426371a32b8cf8685d42dadc5dd42c9ab5b18322d59eefc2
+      image: acreaadca2012104262113.azurecr.io/frontend:latest
+      imageID: acreaadca2012104262113.azurecr.io/frontend@sha256:a3815bd87dd5d7b6a7e41382c4a5bf53c951fc3679318033fb7704a6ef7a5204
+      lastState:
+        terminated:
+          containerID: containerd://392a499441231c884f3b3b6aaec81a3b8a93f2df4c39fb3141925ec1ed4bd1a5
+          exitCode: 1
+          finishedAt: "2026-04-22T20:40:54Z"
+          reason: Error
+          startedAt: "2026-04-22T20:29:25Z"
+      name: frontend
+      ready: true
+      resources: {}
+      restartCount: 14
+      started: true
+      state:
+        running:
+          startedAt: "2026-04-22T20:40:55Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2bn4j
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.224.0.4
+    hostIPs:
+    - ip: 10.224.0.4
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.96
+    podIPs:
+    - ip: 10.244.0.96
+    qosClass: BestEffort
+    startTime: "2026-04-21T22:30:16Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"backend-service","namespace":"ead-ca201"},"spec":{"ports":[{"port":8080,"targetPort":8080}],"selector":{"app":"backend","version":"blue"},"type":"ClusterIP"}}
+    creationTimestamp: "2026-04-21T21:18:02Z"
+    name: backend-service
+    namespace: ead-ca201
+    resourceVersion: "159126"
+    uid: 2ec6aa77-80b8-4f1c-aa1c-c0b3ae36ecce
+  spec:
+    clusterIP: 10.0.123.141
+    clusterIPs:
+    - 10.0.123.141
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: backend
+      version: green
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"frontend-service","namespace":"ead-ca201"},"spec":{"ports":[{"port":80,"targetPort":22137}],"selector":{"app":"frontend"},"type":"LoadBalancer"}}
+    creationTimestamp: "2026-04-21T21:18:03Z"
+    finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+    name: frontend-service
+    namespace: ead-ca201
+    resourceVersion: "4048"
+    uid: 0ab93ffa-044b-49c7-a0ea-994a2251b773
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.0.210.63
+    clusterIPs:
+    - 10.0.210.63
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30366
+      port: 80
+      protocol: TCP
+      targetPort: 22137
+    selector:
+      app: frontend
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 20.126.192.23
+        ipMode: VIP
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "5"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"backend-blue","namespace":"ead-ca201"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"backend","version":"blue"}},"template":{"metadata":{"labels":{"app":"backend","version":"blue"}},"spec":{"containers":[{"env":[{"name":"DATABASE_URL","valueFrom":{"secretKeyRef":{"key":"MONGO_URI","name":"app-secrets"}}}],"image":"acreaadca2012104262113.azurecr.io/backend:latest","name":"backend","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2026-04-21T21:18:02Z"
+    generation: 5
+    name: backend-blue
+    namespace: ead-ca201
+    resourceVersion: "372144"
+    uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: backend
+        version: blue
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: backend
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2026-04-21T21:18:16Z"
+      lastUpdateTime: "2026-04-21T21:18:16Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-04-21T21:18:02Z"
+      lastUpdateTime: "2026-04-22T20:46:17Z"
+      message: ReplicaSet "backend-blue-f4657d459" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 5
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"backend-green","namespace":"ead-ca201"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"backend","version":"green"}},"template":{"metadata":{"labels":{"app":"backend","version":"green"}},"spec":{"containers":[{"env":[{"name":"DATABASE_URL","valueFrom":{"secretKeyRef":{"key":"MONGO_URI","name":"app-secrets"}}}],"image":"kajaldevopsengineer/backend-app:latest","name":"backend","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2026-04-22T21:05:57Z"
+    generation: 1
+    name: backend-green
+    namespace: ead-ca201
+    resourceVersion: "377354"
+    uid: 3bfa77a1-7e15-44f6-aeb3-54e1dd1eec14
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: backend
+        version: green
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: backend
+          version: green
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2026-04-22T21:06:00Z"
+      lastUpdateTime: "2026-04-22T21:06:00Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-04-22T21:05:57Z"
+      lastUpdateTime: "2026-04-22T21:06:00Z"
+      message: ReplicaSet "backend-green-699cff8b58" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"frontend","namespace":"ead-ca201"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"frontend"}},"template":{"metadata":{"labels":{"app":"frontend"}},"spec":{"containers":[{"image":"acreaadca2012104262113.azurecr.io/frontend:latest","imagePullPolicy":"Always","name":"frontend","ports":[{"containerPort":22137}]}]}}}}
+    creationTimestamp: "2026-04-21T21:18:02Z"
+    generation: 2
+    name: frontend
+    namespace: ead-ca201
+    resourceVersion: "370541"
+    uid: 453993b1-dc42-4668-8dbf-a8761be93b5c
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: frontend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: frontend
+      spec:
+        containers:
+        - image: acreaadca2012104262113.azurecr.io/frontend:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 22137
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-04-21T21:18:02Z"
+      lastUpdateTime: "2026-04-21T22:33:15Z"
+      message: ReplicaSet "frontend-78b6f4564d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2026-04-22T20:40:55Z"
+      lastUpdateTime: "2026-04-22T20:40:55Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-04-21T22:30:15Z"
+    generation: 6
+    labels:
+      app: backend
+      pod-template-hash: 686866bf68
+      version: blue
+    name: backend-blue-686866bf68
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-blue
+      uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+    resourceVersion: "159114"
+    uid: b48da6e8-f47e-4377-9782-4953b8787aaf
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 686866bf68
+        version: blue
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: 686866bf68
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: acreaadca2012104262113.azurecr.io/backend:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "4"
+    creationTimestamp: "2026-04-22T07:33:20Z"
+    generation: 6
+    labels:
+      app: backend
+      pod-template-hash: 77bc7d9fb8
+      version: blue
+    name: backend-blue-77bc7d9fb8
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-blue
+      uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+    resourceVersion: "372142"
+    uid: 68f75895-f1d4-468d-80a2-be7030a217f0
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 77bc7d9fb8
+        version: blue
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: 77bc7d9fb8
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:ea3ec07cb976d969c5a123bf9312983755cd9bb4
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "3"
+    creationTimestamp: "2026-04-22T07:10:31Z"
+    generation: 6
+    labels:
+      app: backend
+      pod-template-hash: 7fc7fc45b7
+      version: blue
+    name: backend-blue-7fc7fc45b7
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-blue
+      uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+    resourceVersion: "165214"
+    uid: 7ae73954-6fff-480f-a59a-4ea33d0c3876
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 7fc7fc45b7
+        version: blue
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: 7fc7fc45b7
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:b9287617a8b14ae6f09fe3bcc006b7cf2d7c1e26
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-04-21T21:18:02Z"
+    generation: 4
+    labels:
+      app: backend
+      pod-template-hash: 996b7bd8f
+      version: blue
+    name: backend-blue-996b7bd8f
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-blue
+      uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+    resourceVersion: "23938"
+    uid: 73cb3a8f-d02a-4a80-b67e-fba3ab195b3d
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 996b7bd8f
+        version: blue
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: 996b7bd8f
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "5"
+    creationTimestamp: "2026-04-22T20:46:11Z"
+    generation: 3
+    labels:
+      app: backend
+      pod-template-hash: f4657d459
+      version: blue
+    name: backend-blue-f4657d459
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-blue
+      uid: 227bdf7c-564e-42fa-9e62-af0d7e2489a9
+    resourceVersion: "372132"
+    uid: 84bdd4d6-eff3-444d-b25d-c0f6c65ef722
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: f4657d459
+        version: blue
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: f4657d459
+          version: blue
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:274bc122bf02c0f70e69a394ef82af6ef08c2067
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    fullyLabeledReplicas: 3
+    observedGeneration: 3
+    readyReplicas: 3
+    replicas: 3
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-04-22T21:05:57Z"
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 699cff8b58
+      version: green
+    name: backend-green-699cff8b58
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend-green
+      uid: 3bfa77a1-7e15-44f6-aeb3-54e1dd1eec14
+    resourceVersion: "377353"
+    uid: 5358df8d-bd87-4c69-9360-ea9ce85ad8e9
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 699cff8b58
+        version: green
+    template:
+      metadata:
+        labels:
+          app: backend
+          pod-template-hash: 699cff8b58
+          version: green
+      spec:
+        containers:
+        - env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_URI
+                name: app-secrets
+          image: kajaldevopsengineer/backend-app:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    fullyLabeledReplicas: 3
+    observedGeneration: 1
+    readyReplicas: 3
+    replicas: 3
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-04-21T21:18:02Z"
+    generation: 2
+    labels:
+      app: frontend
+      pod-template-hash: 69954c585c
+    name: frontend-69954c585c
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: frontend
+      uid: 453993b1-dc42-4668-8dbf-a8761be93b5c
+    resourceVersion: "23974"
+    uid: 49c8829b-d222-41be-af4d-a5b1a4772b98
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: frontend
+        pod-template-hash: 69954c585c
+    template:
+      metadata:
+        labels:
+          app: frontend
+          pod-template-hash: 69954c585c
+      spec:
+        containers:
+        - image: kajaldevopsengineer/frontend-app:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 22137
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-04-21T22:30:16Z"
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: 78b6f4564d
+    name: frontend-78b6f4564d
+    namespace: ead-ca201
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: frontend
+      uid: 453993b1-dc42-4668-8dbf-a8761be93b5c
+    resourceVersion: "370539"
+    uid: 4469a939-f818-4f8c-88e7-6c4f59693e6a
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: frontend
+        pod-template-hash: 78b6f4564d
+    template:
+      metadata:
+        labels:
+          app: frontend
+          pod-template-hash: 78b6f4564d
+      spec:
+        containers:
+        - image: acreaadca2012104262113.azurecr.io/frontend:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 22137
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"name":"backend-hpa","namespace":"ead-ca201"},"spec":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":120},"scaleUp":{"stabilizationWindowSeconds":60}},"maxReplicas":5,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":50,"type":"Utilization"}},"type":"Resource"}],"minReplicas":2,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"backend"}}}
+    creationTimestamp: "2026-04-21T21:18:03Z"
+    name: backend-hpa
+    namespace: ead-ca201
+    resourceVersion: "4065"
+    uid: 2bb2debc-fd46-4d37-aa50-4e04946f2708
+  spec:
+    behavior:
+      scaleDown:
+        policies:
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 120
+      scaleUp:
+        policies:
+        - periodSeconds: 15
+          type: Pods
+          value: 4
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 60
+    maxReplicas: 5
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 2
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: backend
+  status:
+    conditions:
+    - lastTransitionTime: "2026-04-21T21:18:18Z"
+      message: 'the HPA controller was unable to get the target''s current scale:
+        deployments.apps "backend" not found'
+      reason: FailedGetScale
+      status: "False"
+      type: AbleToScale
+    currentMetrics: null
+    desiredReplicas: 0
+kind: List
+metadata:
+  resourceVersion: ""
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIE6DCCAtCgAwIBAgIQCXdj9d3g1azzj2M6YfjRgzANBgkqhkiG9w0BAQsFADAN
+      MQswCQYDVQQDEwJjYTAgFw0yNjA0MjEyMDU1MjVaGA8yMDU2MDQyMTIxMDUyNVow
+      DTELMAkGA1UEAxMCY2EwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDC
+      q0084gKDHXr1SvOnhraTIXrD7BT14mdvTDX4v4lVm/h2s42CmZjoGrOStD3KCdQp
+      Bo7JYGcxY1lzZIsWbjp6UFFMgIOQyJ46/FVrMunHuI+0+rpmiOCm4B69nr5ZXaOm
+      ucA5xaI378Y6baaGop21IlZ2onzK9HWzUd7sCZ97nFo3k9gkYqmMis9nfkgcjqXP
+      fplZapg0obzk/LMcT08ZvraqIqrhvn334y8OfiVhPXPTVmlI6QB9Mz2sCL2tNf9B
+      bAj76ri8/ObfT27RwOeAYU5uwDqTnl4YQOPJX/2d4lCG7ZeYqIFquqBWYnfdRlMu
+      sX4nAbLz4IPZTSPFwQmePuDlW6fulllzZskDVZiFhIvNL/AYT65QXsM8xt4Lj4lX
+      mDcfeCtHY28iiZlUkWkNFNI4K4HHdMkXUSsOHWpjTb3ippYyo/y6gCqGxc3Pd0k4
+      2Q+hKwj4aZtwSssySUG0ktySZ8+GWx5RY88akbOEAsQV24+xLbjCvULzp7mtPGVU
+      WiIXuZQX5lT6yuYmLgk3lm+xZpWobBfNK2C9zuUMB7q/KqQIT7Hvm328muz7aK1T
+      +p4BeHYNYAB1OUk/5hwYvmzVlJoGBApfP3827HcDM3MeHDjuyqfvOERpoNOyJ5IR
+      PR0rauVtRdY1jbXafTruZsGLv87zPbLhzjkt07AmUwIDAQABo0IwQDAOBgNVHQ8B
+      Af8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUwr3ewO2CVSRUAc6A
+      5FPIj44pcS0wDQYJKoZIhvcNAQELBQADggIBADyaRu5lJf7BEYl810+TJzcNnsoI
+      /fP63OEqDe9x27e+NJTflGmFJTwzVrCvb6c05B3NugLRa40LpXhvh9dQDo9r8PAD
+      zUsXnS46TB4aSKBD33/CAStaqzYe7hgSMNv+PLZvCAZPNpPa8/35o8oHMmxxoNoT
+      Eh1eb8YcycvkuMTsi2lnyI1Hb+dLwl5biNMwskZnYx/xQ2mBFN4L1c+yGK1UM0qe
+      r3OCGx/JHigF6DyZLC8OFTxjWNSGjkjN3Z0XQgsplQOZh57WFmbgn+J5P1HKjsgK
+      ucMarYCBMt6c+a4slnDpDqJPL6CX2zf7Z+S35X0fA2YZlmywEWulnXlqlppjCpGQ
+      9ZWs6ZzbYuBqjO4F94acK2CC/jIw/BNqBsIw+uQ0KCYncyuM+RNM4x+jrwDewwL2
+      t5ePKaOYA5rzVsYsAAoc/iPv9Xm/3lS6Fpu2eUGpnnZBXriUi5UNFxiEUbCnrw/U
+      5IsvxvzZYoh/8nkfGFMnj6NICo+nNSNvNO4GsEYlkFzWDvmZQMrwBKfM9HP1fH2I
+      dyo662Rx2VJ28rTH59vO4Djc7ojP8E/HKqsi/v1ocoYg/250HLsvdCdEjIyZBmew
+      Pbo6Wd0OqqSF1FmXc8lwGSGGiAk0fvYD3+Dpy3jc8zMKOokdgTIe/Q6mbRGAWWM+
+      y0RoA4ssW89Nuw3T
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ca.crt":"-----BEGIN CERTIFICATE-----\nMIIE6DCCAtCgAwIBAgIQCXdj9d3g1azzj2M6YfjRgzANBgkqhkiG9w0BAQsFADAN\nMQswCQYDVQQDEwJjYTAgFw0yNjA0MjEyMDU1MjVaGA8yMDU2MDQyMTIxMDUyNVow\nDTELMAkGA1UEAxMCY2EwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDC\nq0084gKDHXr1SvOnhraTIXrD7BT14mdvTDX4v4lVm/h2s42CmZjoGrOStD3KCdQp\nBo7JYGcxY1lzZIsWbjp6UFFMgIOQyJ46/FVrMunHuI+0+rpmiOCm4B69nr5ZXaOm\nucA5xaI378Y6baaGop21IlZ2onzK9HWzUd7sCZ97nFo3k9gkYqmMis9nfkgcjqXP\nfplZapg0obzk/LMcT08ZvraqIqrhvn334y8OfiVhPXPTVmlI6QB9Mz2sCL2tNf9B\nbAj76ri8/ObfT27RwOeAYU5uwDqTnl4YQOPJX/2d4lCG7ZeYqIFquqBWYnfdRlMu\nsX4nAbLz4IPZTSPFwQmePuDlW6fulllzZskDVZiFhIvNL/AYT65QXsM8xt4Lj4lX\nmDcfeCtHY28iiZlUkWkNFNI4K4HHdMkXUSsOHWpjTb3ippYyo/y6gCqGxc3Pd0k4\n2Q+hKwj4aZtwSssySUG0ktySZ8+GWx5RY88akbOEAsQV24+xLbjCvULzp7mtPGVU\nWiIXuZQX5lT6yuYmLgk3lm+xZpWobBfNK2C9zuUMB7q/KqQIT7Hvm328muz7aK1T\n+p4BeHYNYAB1OUk/5hwYvmzVlJoGBApfP3827HcDM3MeHDjuyqfvOERpoNOyJ5IR\nPR0rauVtRdY1jbXafTruZsGLv87zPbLhzjkt07AmUwIDAQABo0IwQDAOBgNVHQ8B\nAf8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUwr3ewO2CVSRUAc6A\n5FPIj44pcS0wDQYJKoZIhvcNAQELBQADggIBADyaRu5lJf7BEYl810+TJzcNnsoI\n/fP63OEqDe9x27e+NJTflGmFJTwzVrCvb6c05B3NugLRa40LpXhvh9dQDo9r8PAD\nzUsXnS46TB4aSKBD33/CAStaqzYe7hgSMNv+PLZvCAZPNpPa8/35o8oHMmxxoNoT\nEh1eb8YcycvkuMTsi2lnyI1Hb+dLwl5biNMwskZnYx/xQ2mBFN4L1c+yGK1UM0qe\nr3OCGx/JHigF6DyZLC8OFTxjWNSGjkjN3Z0XQgsplQOZh57WFmbgn+J5P1HKjsgK\nucMarYCBMt6c+a4slnDpDqJPL6CX2zf7Z+S35X0fA2YZlmywEWulnXlqlppjCpGQ\n9ZWs6ZzbYuBqjO4F94acK2CC/jIw/BNqBsIw+uQ0KCYncyuM+RNM4x+jrwDewwL2\nt5ePKaOYA5rzVsYsAAoc/iPv9Xm/3lS6Fpu2eUGpnnZBXriUi5UNFxiEUbCnrw/U\n5IsvxvzZYoh/8nkfGFMnj6NICo+nNSNvNO4GsEYlkFzWDvmZQMrwBKfM9HP1fH2I\ndyo662Rx2VJ28rTH59vO4Djc7ojP8E/HKqsi/v1ocoYg/250HLsvdCdEjIyZBmew\nPbo6Wd0OqqSF1FmXc8lwGSGGiAk0fvYD3+Dpy3jc8zMKOokdgTIe/Q6mbRGAWWM+\ny0RoA4ssW89Nuw3T\n-----END CERTIFICATE-----\n"},"kind":"ConfigMap","metadata":{"annotations":{"kubernetes.io/description":"Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."},"creationTimestamp":"2026-04-21T21:16:53Z","name":"kube-root-ca.crt","namespace":"ead-ca201","resourceVersion":"3590","uid":"9e8e305a-c4e6-4b4e-8917-51a6793371b5"}}
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    creationTimestamp: "2026-04-21T21:16:53Z"
+    name: kube-root-ca.crt
+    namespace: ead-ca201
+    resourceVersion: "375598"
+    uid: 9e8e305a-c4e6-4b4e-8917-51a6793371b5
+- apiVersion: v1
+  data:
+    MONGO_URI: bW9uZ29kYitzcnY6Ly9lYWQyMDI0OmVhZDIwMjQuQGVhZC0yMDIzLTI0LmxwY2x3ZG8ubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eQ==
+  kind: Secret
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"MONGO_URI":"bW9uZ29kYitzcnY6Ly9lYWQyMDI0OmVhZDIwMjQuQGVhZC0yMDIzLTI0LmxwY2x3ZG8ubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eQ=="},"kind":"Secret","metadata":{"annotations":{},"creationTimestamp":"2026-04-21T21:17:39Z","name":"app-secrets","namespace":"ead-ca201","resourceVersion":"3779","uid":"dc9246d0-b2bf-430f-825a-9b5a243fa1a3"},"type":"Opaque"}
+    creationTimestamp: "2026-04-21T21:17:39Z"
+    name: app-secrets
+    namespace: ead-ca201
+    resourceVersion: "375599"
+    uid: dc9246d0-b2bf-430f-825a-9b5a243fa1a3
+  type: Opaque
+kind: List
+metadata:
+  resourceVersion: ""
