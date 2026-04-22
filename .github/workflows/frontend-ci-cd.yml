@@ -25,10 +25,32 @@ jobs:
       - name: Push image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend-app:${{ github.sha }}
 
+      #Install kubectl
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+
+      # Azure login (NEW - IMPORTANT)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Get fresh AKS kubeconfig (REPLACEMENT for old step)
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials \
+            --resource-group rg-ead-ca201 \
+            --name aks-ead-cluster \
+            --overwrite-existing
+
+      # Verify cluster access
+      - name: Verify cluster access
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
+          kubectl get pods -n ead-ca201
+
       - name: Deploy to Kubernetes
         run: |
-          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > kubeconfig
-          export KUBECONFIG=$PWD/kubeconfig
-
-          kubectl apply -f k8s/frontend-deployment.yaml
+          kubectl apply -f k8s/frontend-deployment.yaml -n ead-ca201
           kubectl rollout status deployment/frontend -n ead-ca201
