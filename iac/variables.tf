@@ -3,7 +3,7 @@ variable "resource_group_name" {
 }
 
 variable "location" {
-  default = "uksouth"
+  default = "westeurope"
 }
 
 variable "aks_name" {
@@ -11,5 +11,5 @@ variable "aks_name" {
 }
 
 variable "acr_name" {
-  default = "acreaadca201"
+  default = "acreaadca2012104262113"
 }
