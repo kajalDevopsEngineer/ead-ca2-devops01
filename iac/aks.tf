@@ -4,10 +4,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "eadca201"
 
+  oidc_issuer_enabled = true
+
   default_node_pool {
   name       = "nodepool1"
   node_count = 1
-  vm_size    = "Standard_D2s_v3"
+  vm_size    = "Standard_B2s_v2"
 
   upgrade_settings {
     max_surge = "1"   

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: kajaldevopsengineer/backend-app:latest
+        image: acreaadca2012104262113.azurecr.io/backend:latest
         ports:
         - containerPort: 8080
         env:

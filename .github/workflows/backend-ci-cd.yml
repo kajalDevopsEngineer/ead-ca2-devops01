@@ -13,24 +13,35 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # Docker login
       - name: Docker Login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      # Build image
       - name: Build image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} ./BE
 
+      # Push image
       - name: Push image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }}
 
+      #Install kubectl
       - name: Setup kubectl
         uses: azure/setup-kubectl@v3
 
-      # Setup kubeconfig
-      - name: Setup kubeconfig
+      # Azure login (NEW - IMPORTANT)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Get fresh AKS kubeconfig (REPLACEMENT for old step)
+      - name: Get AKS credentials
         run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
+          az aks get-credentials \
+            --resource-group rg-ead-ca201 \
+            --name aks-ead-cluster \
+            --overwrite-existing
 
       # Verify cluster access
       - name: Verify cluster access
@@ -39,8 +50,8 @@ jobs:
           kubectl get nodes
           kubectl get pods -n ead-ca201
 
-      # OPTIONAL: update both deployments (blue/green)
-      - name: Update BLUE or GREEN manually
+      # Update deployments
+      - name: Update BLUE and GREEN
         run: |
           kubectl set image deployment/backend-blue \
             backend=${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} \
@@ -50,6 +61,7 @@ jobs:
             backend=${{ secrets.DOCKER_USERNAME }}/backend-app:${{ github.sha }} \
             -n ead-ca201
 
+      # Wait for rollout
       - name: Wait rollout
         run: |
           kubectl rollout status deployment/backend-blue -n ead-ca201

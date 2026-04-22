@@ -35,12 +35,19 @@ jobs:
       - name: Setup kubectl
         uses: azure/setup-kubectl@v3
 
-      # 6. Setup kubeconfig
-      - name: Setup kubeconfig
+      # Azure login (NEW - IMPORTANT)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Get fresh AKS kubeconfig (REPLACEMENT for old step)
+      - name: Get AKS credentials
         run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
+          az aks get-credentials \
+            --resource-group rg-ead-ca201 \
+            --name aks-ead-cluster \
+            --overwrite-existing
 
       # 7. Verify cluster access
       - name: Verify cluster access
